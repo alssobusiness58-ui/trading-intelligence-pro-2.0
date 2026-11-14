@@ -1,0 +1,39 @@
+export const MARKET_CONFIG = [
+  {
+    id: "US30",
+    name: "Dow Jones",
+    category: "index",
+    timeframes: ["M5", "M15", "H1", "H4", "D1"],
+    enabled: true,
+  },
+  {
+    id: "US500",
+    name: "S&P 500",
+    category: "index",
+    timeframes: ["M5", "M15", "H1", "H4", "D1"],
+    enabled: true,
+  },
+  {
+    id: "USTEC",
+    name: "Nasdaq 100",
+    category: "index",
+    timeframes: ["M5", "M15", "H1", "H4", "D1"],
+    enabled: true,
+  },
+  {
+    id: "XAUUSD",
+    name: "Gold",
+    category: "commodity",
+    timeframes: ["M5", "M15", "H1", "H4", "D1"],
+    enabled: true,
+  },
+  {
+    id: "BTCUSD",
+    name: "Bitcoin",
+    category: "crypto",
+    timeframes: ["M5", "M15", "H1", "H4", "D1"],
+    enabled: true,
+  },
+];
+
+export const DEFAULT_TIMEFRAME = "M15";
