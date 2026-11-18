@@ -1,79 +1,138 @@
-import React from "react";
+import React, { useState } from "react";
+
+const markets = [
+  { name: "US30", category: "INDICES", price: "En attente", change: "—" },
+  { name: "US100", category: "INDICES", price: "En attente", change: "—" },
+  { name: "US500", category: "INDICES", price: "En attente", change: "—" },
+  { name: "XAUUSD", category: "MÉTAUX", price: "En attente", change: "—" },
+  { name: "EURUSD", category: "FOREX", price: "En attente", change: "—" },
+  { name: "BTCUSD", category: "CRYPTO", price: "En attente", change: "—" },
+  { name: "WTI", category: "ÉNERGIE", price: "En attente", change: "—" },
+];
+
+const panel = {
+  background: "#111c2e",
+  border: "1px solid #263750",
+  borderRadius: 8,
+  padding: 16,
+};
 
 export default function App() {
-  const markets = [
-    { name: "US30", price: "En attente", trend: "Neutre" },
-    { name: "US500", price: "En attente", trend: "Neutre" },
-    { name: "USTEC", price: "En attente", trend: "Neutre" },
-    { name: "XAUUSD", price: "En attente", trend: "Neutre" },
-    { name: "BTCUSD", price: "En attente", trend: "Neutre" },
+  const [active, setActive] = useState("Dashboard");
+  const [search, setSearch] = useState("");
+
+  const filtered = markets.filter(m =>
+    m.name.toLowerCase().includes(search.toLowerCase())
+  );
+
+  const tabs = [
+    "Dashboard", "Marchés", "Actualités",
+    "Calendrier", "COT", "Corrélations",
+    "Boomrang", "Smart Money", "Risk Management"
   ];
 
   return (
     <div style={{
       minHeight: "100vh",
       background: "#080d18",
-      color: "#e8edf7",
+      color: "#e5e7eb",
       fontFamily: "Arial, sans-serif",
-      padding: "24px"
+      padding: 20
     }}>
-      <header style={{ borderBottom: "1px solid #263247", paddingBottom: 20 }}>
-        <h1 style={{ color: "#36d399" }}>TRADING INTELLIGENCE PRO 2.0</h1>
-        <p>Plateforme intelligente de trading multi-marchés</p>
-        <span style={{ color: "#fbbf24" }}>Mode : Démonstration — données non connectées</span>
+      <header style={{
+        display: "flex",
+        justifyContent: "space-between",
+        flexWrap: "wrap",
+        gap: 15,
+        borderBottom: "1px solid #263750",
+        paddingBottom: 20
+      }}>
+        <div>
+          <h1 style={{ color: "#36d399", margin: 0 }}>
+            TRADING INTELLIGENCE PRO 2.0
+          </h1>
+          <p style={{ color: "#8290a8" }}>
+            Institutional Multi-Market Intelligence Terminal
+          </p>
+        </div>
+        <div style={{ color: "#fbbf24" }}>
+          ● MODE DÉMONSTRATION
+          <p style={{ color: "#8290a8", fontSize: 12 }}>
+            Données réelles non connectées
+          </p>
+        </div>
       </header>
 
-      <h2>Tableau de bord</h2>
+      <nav style={{
+        display: "flex",
+        flexWrap: "wrap",
+        gap: 8,
+        margin: "20px 0"
+      }}>
+        {tabs.map(tab => (
+          <button key={tab}
+            onClick={() => setActive(tab)}
+            style={{
+              padding: "10px 14px",
+              background: active === tab ? "#176b58" : "#172338",
+              color: "#fff",
+              border: "1px solid #263750",
+              borderRadius: 6,
+              cursor: "pointer"
+            }}>
+            {tab}
+          </button>
+        ))}
+      </nav>
+
+      <h2 style={{ color: "#36d399" }}>{active}</h2>
 
       <div style={{
         display: "grid",
-        gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))",
-        gap: 16
+        gridTemplateColumns: "repeat(auto-fit,minmax(180px,1fr))",
+        gap: 12,
+        marginBottom: 20
       }}>
         {[
-          ["Marchés", "Multi-actifs"],
-          ["Analyse IA", "En préparation"],
-          ["Smart Money", "En préparation"],
-          ["Gestion du risque", "En préparation"]
+          ["MARCHÉS", "7 instruments"],
+          ["ACTUALITÉS", "En préparation"],
+          ["COT INSTITUTIONNEL", "En préparation"],
+          ["CORRÉLATIONS", "En préparation"]
         ].map(([title, value]) => (
-          <div key={title} style={{
-            background: "#121c2e",
-            padding: 20,
-            borderRadius: 12,
-            border: "1px solid #263247"
-          }}>
-            <h3>{title}</h3>
-            <p style={{ color: "#36d399" }}>{value}</p>
+          <div key={title} style={panel}>
+            <small style={{ color: "#8290a8" }}>{title}</small>
+            <h3 style={{ color: "#36d399" }}>{value}</h3>
           </div>
         ))}
       </div>
 
-      <h2 style={{ marginTop: 32 }}>Surveillance des marchés</h2>
+      <section style={{ ...panel, marginBottom: 20 }}>
+        <h3 style={{ color: "#36d399" }}>
+          Surveillance multi-marchés
+        </h3>
 
-      <div style={{ overflowX: "auto" }}>
-        <table style={{ width: "100%", borderCollapse: "collapse" }}>
-          <thead>
-            <tr style={{ color: "#36d399", textAlign: "left" }}>
-              <th style={{ padding: 12 }}>Instrument</th>
-              <th style={{ padding: 12 }}>Prix</th>
-              <th style={{ padding: 12 }}>Tendance</th>
-            </tr>
-          </thead>
-          <tbody>
-            {markets.map((market) => (
-              <tr key={market.name} style={{ borderTop: "1px solid #263247" }}>
-                <td style={{ padding: 12 }}>{market.name}</td>
-                <td style={{ padding: 12 }}>{market.price}</td>
-                <td style={{ padding: 12 }}>{market.trend}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+        <input
+          value={search}
+          onChange={e => setSearch(e.target.value)}
+          placeholder="Rechercher un instrument..."
+          style={{
+            padding: 12,
+            width: "100%",
+            maxWidth: 350,
+            background: "#080d18",
+            color: "white",
+            border: "1px solid #34445e",
+            borderRadius: 6,
+            marginBottom: 15
+          }}
+        />
 
-      <footer style={{ marginTop: 40, color: "#8290a8" }}>
-        Trading Intelligence Pro 2.0 — Analyse, discipline et gestion du risque.
-      </footer>
-    </div>
-  );
-}
+        <div style={{ overflowX: "auto" }}>
+          <table style={{
+            width: "100%",
+            borderCollapse: "collapse",
+            textAlign: "left"
+          }}>
+            <thead>
+              <tr style={{ color: "#36d399" }}>
+                <th style={{ padding: 12 }}>Instrument</th>
