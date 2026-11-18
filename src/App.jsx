@@ -1,13 +1,58 @@
 import React, { useState } from "react";
 
 const markets = [
+  // INDICES
   { name: "US30", category: "INDICES", status: "À connecter" },
   { name: "US100", category: "INDICES", status: "À connecter" },
   { name: "US500", category: "INDICES", status: "À connecter" },
-  { name: "XAUUSD", category: "MÉTAUX", status: "À connecter" },
+  { name: "GER40", category: "INDICES", status: "À connecter" },
+  { name: "UK100", category: "INDICES", status: "À connecter" },
+  { name: "FRA40", category: "INDICES", status: "À connecter" },
+  { name: "JP225", category: "INDICES", status: "À connecter" },
+  { name: "AUS200", category: "INDICES", status: "À connecter" },
+  { name: "EU50", category: "INDICES", status: "À connecter" },
+  { name: "HK50", category: "INDICES", status: "À connecter" },
+
+  // FOREX
   { name: "EURUSD", category: "FOREX", status: "À connecter" },
-  { name: "BTCUSD", category: "CRYPTO", status: "À connecter" },
+  { name: "GBPUSD", category: "FOREX", status: "À connecter" },
+  { name: "USDJPY", category: "FOREX", status: "À connecter" },
+  { name: "USDCHF", category: "FOREX", status: "À connecter" },
+  { name: "AUDUSD", category: "FOREX", status: "À connecter" },
+  { name: "NZDUSD", category: "FOREX", status: "À connecter" },
+  { name: "USDCAD", category: "FOREX", status: "À connecter" },
+  { name: "EURJPY", category: "FOREX", status: "À connecter" },
+  { name: "GBPJPY", category: "FOREX", status: "À connecter" },
+  { name: "EURGBP", category: "FOREX", status: "À connecter" },
+  { name: "USDZAR", category: "FOREX", status: "À connecter" },
+
+  // METAUX
+  { name: "XAUUSD", category: "MÉTAUX", status: "À connecter" },
+  { name: "XAGUSD", category: "MÉTAUX", status: "À connecter" },
+  { name: "XPTUSD", category: "MÉTAUX", status: "À connecter" },
+  { name: "XPDUSD", category: "MÉTAUX", status: "À connecter" },
+
+  // ENERGIES
   { name: "WTI", category: "ÉNERGIE", status: "À connecter" },
+  { name: "BRENT", category: "ÉNERGIE", status: "À connecter" },
+  { name: "NATGAS", category: "ÉNERGIE", status: "À connecter" },
+
+  // CRYPTOMONNAIES
+  { name: "BTCUSD", category: "CRYPTO", status: "À connecter" },
+  { name: "ETHUSD", category: "CRYPTO", status: "À connecter" },
+  { name: "XRPUSD", category: "CRYPTO", status: "À connecter" },
+  { name: "SOLUSD", category: "CRYPTO", status: "À connecter" },
+  { name: "LTCUSD", category: "CRYPTO", status: "À connecter" },
+  { name: "ADAUSD", category: "CRYPTO", status: "À connecter" },
+
+  // ACTIONS
+  { name: "AAPL", category: "ACTIONS", status: "À connecter" },
+  { name: "MSFT", category: "ACTIONS", status: "À connecter" },
+  { name: "NVDA", category: "ACTIONS", status: "À connecter" },
+  { name: "TSLA", category: "ACTIONS", status: "À connecter" },
+  { name: "AMZN", category: "ACTIONS", status: "À connecter" },
+  { name: "GOOGL", category: "ACTIONS", status: "À connecter" },
+  { name: "META", category: "ACTIONS", status: "À connecter" }
 ];
 
 const tabs = [
