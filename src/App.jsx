@@ -220,7 +220,7 @@ function MarketTable({ filtered, search, setSearch }) {
               }}>
                 <td style={{ padding: 12 }}>{market.name}</td>
                 <td style={{ padding: 12 }}>{market.category}</td>
-                <td style={{ padding: 12 }}>--</td>
+                <td style={{ padding: 12 }}{market.price || "En attente"}></td>
                 <td style={{ padding: 12, color: "#fbbf24" }}>
                   {market.status}
                 </td>
