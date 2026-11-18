@@ -148,8 +148,22 @@ export default function App() {
         <section style={panel}>
           <h3 style={{ color: "#36d399" }}>{active}</h3>
           <p style={{ color: "#8290a8" }}>
-            Module créé. Connexion des sources de données à effectuer.
-          </p>
+  {active === "Actualités"
+    ? "Actualités financières : espace prévu pour MSN Finance et les nouvelles du marché."
+    : active === "Calendrier"
+    ? "Calendrier économique : annonces, résultats, horaires et impact potentiel sur les marchés."
+    : active === "COT"
+    ? "Analyse institutionnelle CFTC : positions Long et Short des grands opérateurs."
+    : active === "Corrélations"
+    ? "Analyse des corrélations entre indices, Forex, métaux, énergies et cryptomonnaies."
+    : active === "Boomrang"
+    ? "Intelligence artificielle : détection des configurations et génération de scénarios de marché."
+    : active === "Smart Money"
+    ? "Analyse Smart Money : liquidité, structure du marché, zones institutionnelles et déséquilibres."
+    : active === "Risk Management"
+    ? "Gestion du risque : capital, risque par position, Stop Loss, drawdown et limites quotidiennes."
+    : "Espace d'analyse en préparation."}
+</p>
         </section>
       )}
 
